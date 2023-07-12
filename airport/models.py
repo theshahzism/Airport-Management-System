@@ -1,5 +1,4 @@
 from django.db import models
-import viewflow.fields
 from viewflow.fields import CompositeKey
 
 class AirportPlace(models.Model):
@@ -21,6 +20,7 @@ class Terminal(models.Model):
 class Department(models.Model):
     IDno = models.AutoField(primary_key=True)
     type = models.CharField(max_length=50)
+    placeID = models.ForeignKey("AirportPlace", on_delete=models.CASCADE)
 
     class Meta:
         indexes = [models.Index(fields=['IDno'])]
@@ -43,15 +43,16 @@ class Engineer(models.Model):
 class AirlineOperates(models.Model):
     airlineID = models.AutoField(primary_key=True)
     airlineName = models.CharField(max_length=50)
-    capacity = models.IntegerField()
+    placeID = models.ForeignKey("Terminal", on_delete=models.CASCADE)
 
     class Meta:
         indexes = [models.Index(fields=['airlineID'])]
 
 class Tickets(models.Model):
-    id = CompositeKey(columns=['airlineName', 'seatNO'])
-    seatNO = models.IntegerField()
-    airlineName = models.CharField(max_length=50)
+    id = CompositeKey(columns=['ticketNO', 'seatNO'])
+    ticketNO = models.CharField(max_length=50)
+    seatNO = models.CharField(max_length=50)
+    airlineID = models.ForeignKey("AirlineOperates", on_delete=models.CASCADE)
     price = models.PositiveBigIntegerField()
     airlineClass = models.CharField(max_length=50)
     source = models.CharField(max_length=100)
@@ -59,8 +60,8 @@ class Tickets(models.Model):
     departureTime = models.TimeField()
     arrivalTime = models.TimeField()
 
-class Luggage(models.Model):
-    id = CompositeKey(columns=['airlineName', 'seatNO'])
-    airlineName = models.CharField(max_length=50)    
-    luggageID = models.IntegerField()
+class Tickets_Luggage(models.Model):
+    ticketNO = models.ForeignKey("Tickets", on_delete=models.CASCADE, related_name='ticketnumber')
+    seatNO = models.ForeignKey("Tickets", on_delete=models.CASCADE)
+    luggageID = models.IntegerField(primary_key=True)
     weight = models.IntegerField()
