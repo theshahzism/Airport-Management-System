@@ -1,4 +1,5 @@
 from django.db import models
+import viewflow.fields
 from viewflow.fields import CompositeKey
 
 class AirportPlace(models.Model):
