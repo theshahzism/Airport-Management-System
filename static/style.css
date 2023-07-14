@@ -73,6 +73,46 @@
     }
 }
 
+@keyframes in-out-horizontal {
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scaleX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes swing-in-out {
+    0% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    25% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+}
+
+f
+/* indexpage */
+/* body */
 
 body {
     background-color: rgba(157, 189, 229, 0.341) !important;
@@ -111,9 +151,13 @@ img.flight {
     font-size: small;
 }
 
+/* Carousel */
+
 .carousel-item>img {
     height: 90vh;
 }
+
+/* Flight Scheule */
 
 .myAccordian {
     top: 20%;
@@ -168,15 +212,16 @@ td {
 }
 
 /* cards */
+
 .cardDiv {
     width: 80%;
 }
 
-.cardDiv>div{
+.cardDiv>div {
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.466);
 }
 
-.horRule{
+.horRule {
     background-color: #6bceff;
     content: "";
     display: inline-block;
@@ -196,9 +241,45 @@ td {
     background-color: rgba(0, 0, 0, 0.432);
 }
 
-.cardOverlay:last-child{
+.cardOverlay:last-child {
     align-self: baseline !important;
 }
+
+/* flightSchedule page */
+
+.tableSetter {
+    height: 450px;
+}
+
+.tableTopImg {
+    height: 600px;
+}
+
+.tableTopImg>img {
+    margin-bottom: 100px !important;
+}
+
+
+.arrivals,
+.departs {
+    animation: swing-in-out 1.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+}
+
+.btnscale {
+    transition: all 2s ease-in-out;
+    transform: scaleY(1.1);
+}
+
+/* Tickets page */
+
+.ticketTable>tbody tr:hover {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    font-weight: 400;
+    box-shadow: 3px 3px 10px black;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.05) perspective(500px) translateZ(10px);
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {}
 

@@ -20,6 +20,7 @@ from airport import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.homePage),
-    
+    path("", views.homePage,name='homepage'),
+    path("schedule", views.full_schedule,name='full_schedule'),
+    path("viewtickets", views.view_tickets,name='full_schedule'),
 ]

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karachi Airport</title>
+    <title>Document</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="static/style.css" />
   </head>
 
-  <body>
+  <body class="position-relative">
     <!-- NavBar -->
 
     <nav class="navbar fixed-top bg-body bg-opacity-75">
@@ -239,248 +239,83 @@
       </div>
     </nav>
 
-    <!-- MAIN -->
-
-    <!-- Image Carousel -->
+    <!-- main -->
     <div
-      id="carouselExampleAutoplaying"
-      class="carousel slide shadow-lg"
-      data-bs-ride="carousel"
+      class="w-100 tableTopImg overflow-hidden mb-5 mt-0 position-absolute top-0 z-n1 position-relative"
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous1.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous2.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous3.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous4.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous5.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <!-- Flight Schedule table Accordian -->
-
-    <div
-      class="accordion position-absolute myAccordian rounded overflow-hidden"
-      id="accordionExample"
-    >
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            id="departure"
-            class="myaccordion-button border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            onclick="accClicked(this)"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-            disabled
-          >
-            Flight Schedule - Departures
-          </button>
-        </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse show"
-          data-bs-parent="#accordionExample"
+      <img src="static/images/tableTop.jpg" alt="" class="img-fluid" />
+      <div class="position-absolute top-50 start-0 z-3 ps-5 ms-5">
+        <p
+          class="text-white h1 fw-bold fst-italic bg-dark bg-opacity-75 p-3 rounded-pill"
         >
-          <!-- This is for departure table -->
-          <div class="accordion-body">
-            <table class="myTable">
-              <thead>
-                <tr>
-                  <th scope="col">Airline</th>
-                  <th scope="col">Class</th>
-                  <th scope="col">Destination</th>
-                  <th scope="col">Departure Time</th>
-                  <th scope="col">Arrival Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for i in departure_results %} {% if forloop.counter <= 7 %}
-                <tr class="border-bottom">
-                  <td>{{i.1}}</td>
-                  <td>{{i.2}}</td>
-                  <td>{{i.4}}</td>
-                  <td>{{i.5}}</td>
-                  <td>{{i.6}}</td>
-                </tr>
-                {% endif %} {% endfor %}
-              </tbody>
-            </table>
-
-            <a href="{% url 'full_schedule' %}" class="text-decoration-none"
-              >View all flights</a
-            >
-          </div>
-        </div>
+          Flight Schedule
+        </p>
       </div>
-      <div class="accordion-item rounded-0">
-        <h2 class="accordion-header">
-          <button
-            class="myaccordion-button border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-            onclick="accClicked(this)"
-          >
-            Flight Schedule - Arrivals
-          </button>
-        </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-        >
-          <!-- This is for arrival tables -->
-          <div class="accordion-body">
-            <table class="myTable">
-              <thead>
-                <tr>
-                  <th scope="col">Airline</th>
-                  <th scope="col">Class</th>
-                  <th scope="col">Source</th>
-                  <th scope="col">Departure Time</th>
-                  <th scope="col">Arrival Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for i in arrival_results %} {% if forloop.counter <= 7 %}
-                <tr class="border-bottom">
-                  <td>{{i.1}}</td>
-                  <td>{{i.2}}</td>
-                  <td>{{i.3}}</td>
-                  <td>{{i.5}}</td>
-                  <td>{{i.6}}</td>
-                </tr>
-                {% endif %} {% endfor %}
-              </tbody>
-            </table>
-
-            <a href="{% url 'full_schedule' %}" class="text-decoration-none"
-              >View all flights</a
-            >
-          </div>
-        </div>
-      </div>
-      <a
-        href="https://en.allmetsat.com/metar-taf/pakistan-afghanistan.php?icao=OPKC"
-        class="myaccordion-button border-0 text-decoration-none"
-        >Live Weather Update</a
-      >
     </div>
+    <div class="tableSetter"></div>
+    <div class="w-75 mx-auto">
+      <ul class="nav nav-tabs">
+        <li class="nav-item bg-secondary rounded-top">
+          <a
+            id="arrive"
+            class="nav-link fw-semibold fs-3 bg-dark text-white px-5 active btnscale"
+            aria-current="page"
+            data-bs-target="arrival"
+            onclick="scheduleTab(this)"
+            >Arrivals</a
+          >
+        </li>
+        <li class="nav-item bg-secondary rounded-top">
+          <a
+            id="depart"
+            class="nav-link fw-semibold fs-3 text-white px-5"
+            data-bs-target="depart"
+            onclick="scheduleTab(this)"
+            >Departures</a
+          >
+        </li>
+      </ul>
+      <table class="table table-hover table-striped align-middle bg-white">
+        <thead class="bg-light arrivals">
+          <tr class="table-dark">
+            <th scope="col">Time</th>
+            <th scope="col">Airline Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
 
-    <!-- Cards -->
-    <div class="cardDiv d-flex justify-content-evenly my-5 mx-auto">
-      <div class="card text-bg-dark col-2 border-0">
-        <img
-          src="static/images/cardTransport.webp"
-          class="card-img"
-          alt="..."
-        />
-        <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
-          <h5 class="card-title pt-5">Airport Transportation</h5>
-          <div class="text-center w-100 mt-auto">
-            <span class="horRule"></span>
-          </div>
-          <div class="d-flex mt-2">
-            <i class="fa-solid fa-car-side"></i>
-            <i class="fa-solid fa-angle-right ms-auto"></i>
-          </div>
-        </div>
-      </div>
-      <div class="card text-bg-dark col-2 border-0">
-        <img src="static/images/cardFood.webp" class="card-img" alt="..." />
-        <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
-          <h5 class="card-title pt-5">Food</h5>
-          <div class="text-center w-100 mt-auto">
-            <span class="horRule"></span>
-          </div>
-          <div class="d-flex mt-2">
-            <i class="fa-solid fa-utensils"></i>
-            <i class="fa-solid fa-angle-right ms-auto"></i>
-          </div>
-        </div>
-      </div>
-      <div class="card text-bg-dark col-2 border-0">
-        <img src="static/images/cardShopping.webp" class="card-img" alt="..." />
-        <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
-          <h5 class="card-title pt-5">Shopping</h5>
-          <div class="text-center w-100 mt-auto">
-            <span class="horRule"></span>
-          </div>
-          <div class="d-flex mt-2">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <i class="fa-solid fa-angle-right ms-auto"></i>
-          </div>
-        </div>
-      </div>
-      <div class="card text-bg-dark col-2 border-0">
-        <img
-          src="static/images/cardLostThings.webp"
-          class="card-img"
-          alt="..."
-        />
-        <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
-          <h5 class="card-title pt-5">Lost & Found</h5>
-          <div class="text-center w-100 mt-auto">
-            <span class="horRule"></span>
-          </div>
-          <div class="d-flex mt-2">
-            <i class="fa-solid fa-briefcase"></i>
-            <i class="fa-solid fa-angle-right ms-auto"></i>
-          </div>
-        </div>
-      </div>
+        <!-- This is full flight schedule for arrivals -->
+
+        <tbody class="arrivals">
+          {% for i in arrival_results %}
+          <tr>
+            <th scope="row">{{i.0}}</th>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <thead class="d-none bg-light departs">
+          <tr class="table-dark">
+            <th scope="col">Time</th>
+            <th scope="col">Airline Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">To</th>
+          </tr>
+        </thead>
+        <tbody class="d-none departs">
+          {% for i in departure_results %}
+          <tr>
+            <th scope="row">{{i.0}}</th>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.4}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
     <!-- footer -->

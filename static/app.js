@@ -1,3 +1,4 @@
+// Display Date and Temp
 async function logJSONData() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -28,10 +29,11 @@ async function logJSONData() {
         })()
     }
 };
-logJSONData()
 // document.body.addEventListener("load", logJSONData)
+logJSONData()
 
 
+// NavBar Functionality
 function navigate(self) {
     let elems = {
         "flight": document.querySelectorAll(".flight"),
@@ -56,7 +58,7 @@ function navigate(self) {
     })
 }
 
-
+// Flight Schedule Table Functionality
 function accClicked(name) {
     let accBtns = document.querySelectorAll(".myaccordion-button")
     accBtns.forEach((btn) => {
@@ -74,5 +76,37 @@ function accClicked(name) {
     } else {
         accTwo.classList.add("show")
         accOne.classList.remove("show")
+    }
+}
+
+// Flight Schedule Page
+
+
+function scheduleTab(self) {
+    let arrive = document.getElementById("arrive")
+    let depart = document.getElementById("depart")
+    let arriveEle = Array.from(document.getElementsByClassName("arrivals"))
+    let departEle = Array.from(document.getElementsByClassName("departs"))
+    arrive.classList.remove("active")
+    depart.classList.remove("active")
+    self.classList.add("active")
+    if (self.dataset.bsTarget == "arrival") {
+        arrive.classList.add("bg-dark", "btnscale")
+        depart.classList.remove("bg-dark", "btnscale")
+        departEle.forEach((ele) => {
+            ele.classList.add("d-none")
+        })
+        arriveEle.forEach((ele) => {
+            ele.classList.remove("d-none")
+        })
+    } else {
+        depart.classList.add("bg-dark", "btnscale")
+        arrive.classList.remove("bg-dark", "btnscale")
+        arriveEle.forEach((ele) => {
+            ele.classList.add("d-none")
+        })
+        departEle.forEach((ele) => {
+            ele.classList.remove("d-none")
+        })
     }
 }
