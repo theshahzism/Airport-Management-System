@@ -35,7 +35,9 @@ def view_tickets(request):
     cursor=connection.cursor()
     cursor.execute('SELECT airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
     results_tickets=cursor.fetchall()
-    return render(request,"tickets.html",{'ticket_results':results_tickets})
+    cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    distict_tickets=cursor.fetchall()
+    return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})
 
 
 

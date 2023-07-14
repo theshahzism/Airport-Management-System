@@ -266,9 +266,14 @@
         <div class="mx-auto">
           <select class="form-select" aria-label="Default select example">
             <option value="" selected>Destination</option>
-            <option value="1">One</option>
+            {% for i in tickets_distinct %}
+            <option value="1">{{i.0}}</option>
+            <!-- 
             <option value="2">Two</option>
             <option value="3">Three</option>
+            <option value="3">Four</option>
+            -->
+            {% endfor %}
           </select>
         </div>
         <div class="mx-auto">
