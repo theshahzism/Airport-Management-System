@@ -168,7 +168,6 @@ img.flight {
 }
 
 .myaccordion-button {
-    /* background-color: rgb(30, 99, 142); */
     background: rgb(30, 99, 142);
     background: linear-gradient(90deg, rgba(30, 99, 142, 1) 0%, rgba(93, 145, 177, 1) 49%, rgba(158, 192, 214, 1) 100%);
     color: white;

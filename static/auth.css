@@ -1,0 +1,103 @@
+.body1 {
+  /* background-image: url("https://img.freepik.com/free-vector/purple-3d-modern-background-design_53876-87399.jpg?size=626&ext=jpg&ga=GA1.2.400972649.1671267927&semt=ais") !important; */
+  background: rgb(30, 99, 142);
+  background: linear-gradient(90deg, rgb(11, 67, 101) 0%, rgba(93, 145, 177, 1) 49%, rgb(247, 252, 255) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.colourThemeText {
+  background: rgb(43, 132, 187);
+  background-clip: initial;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+}
+
+a.colourThemeText:hover,
+.colourThemeBtn:hover {
+  opacity: 0.75;
+  transform: scale(1.02) !important;
+  transition: linear 0.2s !important;
+}
+
+.colourThemeBtn {
+  background: rgb(30, 99, 142);
+  background: linear-gradient(90deg, rgba(30, 99, 142, 1) 0%, rgba(93, 145, 177, 1) 49%, rgba(158, 192, 214, 1) 100%);
+}
+
+
+#signIn,
+#signUp {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  align-items: center !important;
+  transform: translateX(0px);
+  transition: all 1.3s ease-in-out;
+}
+
+.moveOut {
+  transform: translateX(1800px) !important;
+}
+
+.moveIn {
+  transform: translateX(-1800px) !important;
+}
+
+
+.signInDiv,
+.signUpDiv,
+.signPageDiv {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  margin: auto 0px !important;
+  height: 650px !important;
+  width: 550px !important;
+  padding: 100px 75px !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.horRule::before,
+.horRule::after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  vertical-align: middle;
+  width: 30%;
+}
+
+
+.signPageDiv {
+  justify-content: flex-start;
+  background-image: url("/static/images/auth2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#signPageDiv1 {
+  background-image: url("/static/images/auth1.jpg");
+}
+
+#signPageDiv2 {
+  background-image: url("/static/images/auth2.jpg");
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
