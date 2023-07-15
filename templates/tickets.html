@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="static/style.css" />
   </head>
 
@@ -18,76 +15,42 @@
 
     <nav class="navbar fixed-top bg-body bg-opacity-75">
       <div class="container-fluid ps-5">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a
-          class="navbar-brand h1 fs-1 font-monospace fw-bolder text-uppercase"
-          href="{% url 'homepage' %}"
-          >Karachi Airport<i class="fa-solid fa-plane mx-2"></i
-        ></a>
+        <a class="navbar-brand h1 fs-1 font-monospace fw-bolder text-uppercase" href="{% url 'homepage' %}">Karachi
+          Airport<i class="fa-solid fa-plane mx-2"></i></a>
         <div class="d-flex flex-row">
           <div class="d-flex flex-row">
-            <span id="wLogo" class="fs-6"
-              ><i class="fa-solid fa-arrow-rotate-right"></i
-            ></span>
+            <span id="wLogo" class="fs-6"><i class="fa-solid fa-arrow-rotate-right"></i></span>
             <div id="wTemp" class="mx-2 fs-6">
               <i class="fa-solid fa-arrow-rotate-right"></i>
             </div>
           </div>
-          <span id="curDate" class="mx-2 fs-6 fw-semibold"
-            ><i class="fa-solid fa-arrow-rotate-right"></i
-          ></span>
+          <span id="curDate" class="mx-2 fs-6 fw-semibold"><i class="fa-solid fa-arrow-rotate-right"></i></span>
         </div>
-        <div
-          class="offcanvas offcanvas-start"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-body overflow-hidden position-relative p-0">
             <div class="row">
               <div class="col-2 p-5">
                 <ul class="navbar-nav flex-grow-1 ps-5 my-1">
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
-                      onclick="navigate(this)"
-                      >Flight</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
+                      onclick="navigate(this)">Flight</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Services</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Services</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Airport</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Airport</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Tickets</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Tickets</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-5 fw-semibold text-uppercase" href="#"
-                      >About Us</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase" href="#">About Us</a>
                   </li>
                 </ul>
               </div>
@@ -100,18 +63,10 @@
                     <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-uppercase"
-                      href="flightSchedule.html"
-                      >Arrival</a
-                    >
+                    <a class="nav-link text-uppercase" href="flightSchedule.html">Arrival</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-uppercase"
-                      href="flightSchedule.html"
-                      >Departures</a
-                    >
+                    <a class="nav-link text-uppercase" href="flightSchedule.html">Departures</a>
                   </li>
                 </ul>
               </div>
@@ -130,12 +85,8 @@
                   </li>
                 </ul>
               </div>
-              <img
-                src="static/images/navImg1.jpg"
-                alt=""
-                height="500px"
-                class="position-absolute end-0 flight d-block col-3 p-0"
-              />
+              <img src="static/images/navImg1.jpg" alt="" height="500px"
+                class="position-absolute end-0 flight d-block col-3 p-0" />
               <div class="service d-none col-3 p-5">
                 <ul class="navbar-nav ps-3">
                   <li class="nav-item">
@@ -157,9 +108,7 @@
                     <p class="fs-5 fw-semibold text-uppercase">Shopping</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#"
-                      >Stores & Mall</a
-                    >
+                    <a class="nav-link text-uppercase" href="#">Stores & Mall</a>
                   </li>
                 </ul>
               </div>
@@ -169,9 +118,7 @@
                     <p class="fs-5 fw-semibold text-uppercase">Experience</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#"
-                      >Rest & Entertainment</a
-                    >
+                    <a class="nav-link text-uppercase" href="#">Rest & Entertainment</a>
                   </li>
                 </ul>
               </div>
@@ -206,33 +153,23 @@
                   </li>
                 </ul>
               </div>
-              <img
-                src="static/images/navImg2.jpg"
-                alt=""
-                height="500px"
-                class="d-none position-absolute end-0 airport d-block col-3 p-0"
-              />
+              <img src="static/images/navImg2.jpg" alt="" height="500px"
+                class="d-none position-absolute end-0 airport d-block col-3 p-0" />
               <div class="ticket d-none col-3 p-5">
                 <ul class="navbar-nav ps-3">
                   <li class="nav-item">
                     <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="tickets.html"
-                      >View Tickets</a
-                    >
+                    <a class="nav-link text-uppercase" href="tickets.html">View Tickets</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-uppercase" href="#">Book tickets</a>
                   </li>
                 </ul>
               </div>
-              <img
-                src="static/images/navImg3.jpg"
-                alt=""
-                height="500px"
-                class="d-none position-absolute end-0 ticket d-block col-3 p-0"
-              />
+              <img src="static/images/navImg3.jpg" alt="" height="500px"
+                class="d-none position-absolute end-0 ticket d-block col-3 p-0" />
             </div>
           </div>
         </div>
@@ -240,18 +177,10 @@
     </nav>
 
     <!-- main -->
-    <div
-      class="w-100 tableTopImg overflow-hidden mb-5 mt-0 position-absolute top-0 z-n1 position-relative"
-    >
-      <img
-        src="static/images/tableTopTicket.jpg"
-        alt=""
-        class="img-fluid object-fit-scale"
-      />
+    <div class="w-100 tableTopImg overflow-hidden mb-5 mt-0 position-absolute top-0 z-n1 position-relative">
+      <img src="static/images/tableTopTicket.jpg" alt="" class="img-fluid object-fit-scale" />
       <div class="position-absolute top-50 start-0 z-3 ps-5 ms-5">
-        <p
-          class="text-white h1 fw-bold fst-italic bg-dark bg-opacity-75 p-3 rounded-pill"
-        >
+        <p class="text-white h1 fw-bold fst-italic bg-dark bg-opacity-75 p-3 rounded-pill">
           Flight Tickets
         </p>
       </div>
@@ -292,28 +221,15 @@
           </li>
           <li class="nav-item my-auto mx-3">
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="order"
-                id="ascending"
-                checked
-                value="false"
-                onclick="sortFunc()"
-              />
+              <input class="form-check-input" type="radio" name="order" id="ascending" checked value="false"
+                onclick="sortFunc()" />
               <label class="form-check-label" for="ascending">
                 Ascending
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="order"
-                id="descending"
-                value="true"
-                onclick="sortFunc()"
-              />
+              <input class="form-check-input" type="radio" name="order" id="descending" value="true"
+                onclick="sortFunc()" />
               <label class="form-check-label" for="descending">
                 Descending
               </label>
@@ -322,9 +238,7 @@
         </ul>
       </div>
 
-      <table
-        class="table table-hover table-striped align-middle bg-white ticketTable"
-      >
+      <table class="table table-hover table-striped align-middle bg-white ticketTable">
         <thead class="bg-light">
           <tr class="table-dark">
             <th scope="col">Airline Name</th>
@@ -336,24 +250,21 @@
           </tr>
         </thead>
         <tbody class="">
-          {% for i in ticket_results %} {% if forloop.counter <= 7 %}
-          <th scope="row">{{i.0}}</th>
-
+          {% for i in ticket_results %} {% if forloop.counter <= 7 %} 
+          
           <tr class="border-bottom">
-            <td>{{i.1}}</td>
-            <td>{{i.2}}</td>
-            <td>{{i.3}}</td>
-            <td>{{i.4}}</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary btn-outline-dark border-0 text-white"
-              >
-                Book
-              </button>
-            </td>
-          </tr>
-          {% endif %} {% endfor %}
+              <th scope="row">{{i.0}}</th>
+              <td>{{i.1}}</td>
+              <td>{{i.2}}</td>
+              <td>{{i.3}}</td>
+              <td>{{i.4}}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-outline-dark border-0 text-white">
+                  Book
+                </button>
+              </td>
+            </tr>
+            {% endif %} {% endfor %}
         </tbody>
       </table>
     </div>
@@ -362,10 +273,7 @@
 
     <div class="container-fluid mt-5 px-0">
       <!-- Footer -->
-      <footer
-        class="text-center text-lg-start text-white"
-        style="background-color: #929fba"
-      >
+      <footer class="text-center text-lg-start text-white" style="background-color: #929fba">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
           <!-- Section: Links -->
@@ -395,18 +303,10 @@
                   Useful Links
                 </h6>
                 <p>
-                  <a
-                    class="text-white text-decoration-none"
-                    href="flightSchedule.html"
-                    >Arrivals</a
-                  >
+                  <a class="text-white text-decoration-none" href="flightSchedule.html">Arrivals</a>
                 </p>
                 <p>
-                  <a
-                    class="text-white text-decoration-none"
-                    href="flightSchedule.html"
-                    >Departures</a
-                  >
+                  <a class="text-white text-decoration-none" href="flightSchedule.html">Departures</a>
                 </p>
                 <p>
                   <a class="text-white text-decoration-none">Resturants</a>
@@ -437,40 +337,20 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
 
                 <!-- Facebook -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #3b5998"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i
+                    class="fab fa-facebook-f"></i></a>
 
                 <!-- Twitter -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #55acee"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i
+                    class="fab fa-twitter"></i></a>
 
                 <!-- Google -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #dd4b39"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-google"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i
+                    class="fab fa-google"></i></a>
 
                 <!-- Instagram -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #ac2bac"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i
+                    class="fab fa-instagram"></i></a>
               </div>
             </div>
             <!--Grid row-->
@@ -480,10 +360,7 @@
         <!-- Grid container -->
 
         <!-- Copyright -->
-        <div
-          class="text-center p-3"
-          style="background-color: rgba(0, 0, 0, 0.2)"
-        >
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
           © 2023 Copyright:
           <a class="text-white" href="">KarachiAirport.com</a>
         </div>
@@ -492,15 +369,11 @@
       <!-- Footer -->
     </div>
 
-    <script
-      src="https://kit.fontawesome.com/0091f48b02.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    <script src="https://kit.fontawesome.com/0091f48b02.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script src="static/app.js"></script>
   </body>
+
 </html>
