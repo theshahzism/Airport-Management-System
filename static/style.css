@@ -160,10 +160,10 @@ img.flight {
 /* Flight Scheule */
 
 .myAccordian {
-    top: 20%;
-    left: 65%;
-    min-width: 500px !important;
-    width: 500px !important;
+    top: 15%;
+    left: 60%;
+    min-width: 600px !important;
+    width: 600px !important;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.812);
 }
 
@@ -187,7 +187,7 @@ img.flight {
     animation: 1s ease-out 0s 1 zoomIn;
     margin: 0 auto;
     font-size: x-small !important;
-    width: 90%;
+    width: 95%;
 
 }
 
