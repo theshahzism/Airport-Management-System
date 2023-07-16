@@ -24,3 +24,7 @@ urlpatterns = [
     path("schedule", views.full_schedule,name='full_schedule'),
     path("viewtickets", views.view_tickets,name='view_tickets'),
 ]
+
+admin.site.index_title='Airport Management System'
+admin.site.site_header='Airport Management System Admin'
+admin.site.site_title='DBMS Project'

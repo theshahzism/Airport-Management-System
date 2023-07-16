@@ -12,10 +12,10 @@ class AirportPlace(models.Model):
 class Restaurants(models.Model):
     placeID = models.ForeignKey("AirportPlace", on_delete=models.CASCADE)
     brand = models.CharField(max_length=50)
-
 class Terminal(models.Model):
     placeID = models.ForeignKey("AirportPlace", on_delete=models.CASCADE)
     capacity = models.CharField(max_length=50)
+
 
 class Department(models.Model):
     IDno = models.AutoField(primary_key=True)
@@ -25,20 +25,27 @@ class Department(models.Model):
     class Meta:
         indexes = [models.Index(fields=['IDno'])]
 
+
+
 class Security(models.Model):
     IDno = models.ForeignKey("Department", on_delete=models.CASCADE)
     secName = models.CharField(max_length=50)
     grade = models.CharField(max_length=50)
+
 
 class Staff(models.Model):
     IDno = models.ForeignKey("Department", on_delete=models.CASCADE)
     staffName = models.CharField(max_length=50)
     grade = models.CharField(max_length=50)
 
+
+
 class Engineer(models.Model):
     IDno = models.ForeignKey("Department", on_delete=models.CASCADE)
     engName = models.CharField(max_length=50)
     grade = models.CharField(max_length=50)
+
+
 
 class AirlineOperates(models.Model):
     airlineID = models.AutoField(primary_key=True)
@@ -47,6 +54,8 @@ class AirlineOperates(models.Model):
 
     class Meta:
         indexes = [models.Index(fields=['airlineID'])]
+
+
 
 class Tickets(models.Model):
     id = CompositeKey(columns=['ticketNO', 'seatNO'])
@@ -60,8 +69,13 @@ class Tickets(models.Model):
     departureTime = models.TimeField()
     arrivalTime = models.TimeField()
 
+
+
+
 class Tickets_Luggage(models.Model):
     ticketNO = models.ForeignKey("Tickets", on_delete=models.CASCADE, related_name='ticketnumber')
     seatNO = models.ForeignKey("Tickets", on_delete=models.CASCADE)
     luggageID = models.IntegerField(primary_key=True)
     weight = models.IntegerField()
+
+    
