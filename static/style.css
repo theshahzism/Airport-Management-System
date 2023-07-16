@@ -110,8 +110,7 @@
     }
 }
 
-f
-/* indexpage */
+
 /* body */
 
 body {
@@ -145,7 +144,8 @@ img.flight {
     animation: 1s ease-out 0s 1 slideInRight;
 }
 
-/* Main */
+/* indexpage */
+
 
 .myText {
     font-size: small;
