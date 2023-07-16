@@ -279,6 +279,13 @@ td {
     transform: scale(1.05) perspective(500px) translateZ(10px);
 }
 
+/* User Profile page */
+
+#save:disabled{
+    color: white;
+    background-color: rgb(101, 140, 79);
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {}
 
