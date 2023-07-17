@@ -116,7 +116,7 @@ class Tickets_Luggage(models.Model):
     weight = models.IntegerField()
 
     def __str__(self):
-        return f"Ticket={self.ticketNO}, Seat={self.seatNO}, Luggade ID={self.luggageID}, Weight={self.weight}"
+        return f"Ticket={self.ticketNO}, Luggade ID={self.luggageID}, Weight={self.weight}"
 
 
 
