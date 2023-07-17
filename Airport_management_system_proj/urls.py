@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path
 from airport import views
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.homePage,name='homepage'),
@@ -28,10 +27,10 @@ urlpatterns = [
     path('login', views.login_user, name='login'),
     path('register', views.register_user, name='register'),
     path('logout', views.logout_user, name='logout'),
-    path('userprofile', views.user_profile, name='userprofile'),
+    path('editprofile', views.editprofile, name='editprofile'),
     path('mytickets', views.show_tickets, name='my_tickets'),
     path('accounts/login/',views.login_user, name='login'),
-]
+    ]
 
 
 admin.site.index_title='Airport Management System'

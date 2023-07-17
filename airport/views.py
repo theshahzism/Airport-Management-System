@@ -100,6 +100,12 @@ def register_user(request):
         if user.exists():
             messages.info(request, 'Username already taken')
             return redirect('register')
+        
+        user = User.objects.filter(email = email)
+
+        if user.exists():
+            messages.info(request, 'Email already taken')
+            return redirect('register')
 
         user = User.objects.create(
             username = username,
@@ -112,5 +118,28 @@ def register_user(request):
         return redirect('login')
     return render(request, 'register.html')
 
-def user_profile(request):
-    return render(request,'userProfile.html')
+@login_required
+def editprofile(request):
+    active_user = request.session['username']
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = User.objects.filter(email = email)
+
+        if user.exists():
+            messages.info(request, 'Email already taken')
+            return redirect('editprofile')
+        
+        updated_user = User.objects.get(username = active_user)
+        updated_user.first_name = first_name
+        updated_user.last_name = last_name
+        updated_user.email = email
+        updated_user.set_password(password)
+        updated_user.save()
+        messages.success(request, 'Credentials Successfully Updated!')
+
+
+    return render(request,'editprofile.html')

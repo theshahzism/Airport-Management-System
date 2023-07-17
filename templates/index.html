@@ -46,10 +46,12 @@
             ><i class="fa-solid fa-arrow-rotate-right"></i
           ></span>
           {% if request.user.is_authenticated %}
-          <a class="text-black text-decoration-none mx-3 align-self-center" href="">{{ request.user.username }}<i
+          <a class="text-black text-decoration-none mx-3 align-self-center" href="editprofile">{{ request.user.username }}<i
             class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
           </a>
-          <a href="logout">logout</a>
+          <a class="text-black text-decoration-none mx-3 align-self-center" href="logout">Logout<i
+            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+          </a>
           {% else %}
           <a class="text-black text-decoration-none mx-3 align-self-center" href="login">signIn<i
             class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
