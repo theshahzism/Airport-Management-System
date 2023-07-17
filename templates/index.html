@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karachi Airport</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="static/style.css" />
   </head>
 
@@ -18,88 +15,55 @@
 
     <nav class="navbar fixed-top bg-body bg-opacity-75">
       <div class="container-fluid ps-5">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a
-          class="navbar-brand h1 fs-1 font-monospace fw-bolder text-uppercase my-auto mx-auto ps-3"
-          href="{% url 'homepage' %}"
-          >Karachi Airport<i class="fa-solid fa-plane mx-2"></i
-        ></a>
+        <a class="navbar-brand h1 fs-1 font-monospace fw-bolder text-uppercase my-auto mx-auto ps-3"
+          href="{% url 'homepage' %}">Karachi Airport<i class="fa-solid fa-plane mx-2"></i></a>
         <div class="d-flex flex-row">
           <div class="d-flex flex-row my-auto">
-            <span id="wLogo" class="fs-6"
-              ><i class="fa-solid fa-arrow-rotate-right"></i
-            ></span>
+            <span id="wLogo" class="fs-6"><i class="fa-solid fa-arrow-rotate-right"></i></span>
             <div id="wTemp" class="mx-2 fs-6">
               <i class="fa-solid fa-arrow-rotate-right"></i>
             </div>
           </div>
-          <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"
-            ><i class="fa-solid fa-arrow-rotate-right"></i
-          ></span>
+          <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"><i class="fa-solid fa-arrow-rotate-right"></i></span>
           {% if request.user.is_authenticated %}
-          <a class="text-black text-decoration-none mx-3 align-self-center" href="editprofile">{{ request.user.username }}<i
-            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+          <a class="text-black text-decoration-none mx-3 align-self-center"
+            href="editprofile">{{ request.user.username }}<i
+              class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
           </a>
           <a class="text-black text-decoration-none mx-3 align-self-center" href="logout">Logout<i
-            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+              class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
           </a>
           {% else %}
           <a class="text-black text-decoration-none mx-3 align-self-center" href="login">signIn<i
-            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+              class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
           </a>
           {% endif %}
         </div>
-        <div
-          class="offcanvas offcanvas-start"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-body overflow-hidden position-relative p-0">
             <div class="row">
               <div class="col-2 p-5">
                 <ul class="navbar-nav flex-grow-1 ps-5 my-1">
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
-                      onclick="navigate(this)"
-                      >Flight</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
+                      onclick="navigate(this)">Flight</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Services</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Services</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Airport</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Airport</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                      onclick="navigate(this)"
-                      >Tickets</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Tickets</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-5 fw-semibold text-uppercase" href="#"
-                      >About Us</a
-                    >
+                    <a class="nav-link fs-5 fw-semibold text-uppercase" href="#">About Us</a>
                   </li>
                 </ul>
               </div>
@@ -112,42 +76,15 @@
                     <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-uppercase"
-                      href="schedule"
-                      >Arrival</a
-                    >
+                    <a class="nav-link text-uppercase" href="schedule">Arrival</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-uppercase"
-                      href="schedule"
-                      >Departures</a
-                    >
+                    <a class="nav-link text-uppercase" href="schedule">Departures</a>
                   </li>
                 </ul>
               </div>
-              <div class="flight d-block col-3 p-5">
-                <ul class="navbar-nav ps-3">
-                  <li class="nav-item">
-                    <p class="fs-5 fw-semibold text-uppercase">
-                      Airport Guides
-                    </p>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Something</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Something</a>
-                  </li>
-                </ul>
-              </div>
-              <img
-                src="static/images/navImg1.jpg"
-                alt=""
-                height="500px"
-                class="position-absolute end-0 flight d-block col-3 p-0"
-              />
+              <img src="static/images/navImg1.jpg" alt="" height="500px"
+                class="position-absolute end-0 flight d-block col-3 p-0" />
               <div class="service d-none col-3 p-5">
                 <ul class="navbar-nav ps-3">
                   <li class="nav-item">
@@ -158,9 +95,6 @@
                   <li class="nav-item">
                     <a class="nav-link text-uppercase" href="#">Resturants</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Cafes</a>
-                  </li>
                 </ul>
               </div>
               <div class="service d-none col-3 p-5">
@@ -169,24 +103,12 @@
                     <p class="fs-5 fw-semibold text-uppercase">Shopping</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#"
-                      >Stores & Mall</a
-                    >
+                    <a class="nav-link text-uppercase" href="#">Stores & Mall</a>
                   </li>
                 </ul>
               </div>
-              <div class="service d-none col-3 p-5">
-                <ul class="navbar-nav ps-3">
-                  <li class="nav-item">
-                    <p class="fs-5 fw-semibold text-uppercase">Experience</p>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#"
-                      >Rest & Entertainment</a
-                    >
-                  </li>
-                </ul>
-              </div>
+              <img src="static/images/navImg4.jpg" alt="" height="500px"
+                class="d-none position-absolute end-0 service d-block col-3 p-0" />
               <div class="airport d-none col-3 p-5">
                 <ul class="navbar-nav ps-3">
                   <li class="nav-item">
@@ -196,12 +118,6 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-uppercase" href="#">Taxi</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Parking Area</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Car rental</a>
                   </li>
                 </ul>
               </div>
@@ -213,40 +129,25 @@
                   <li class="nav-item">
                     <a class="nav-link text-uppercase" href="#">Airport Map</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Terminals</a>
-                  </li>
                 </ul>
               </div>
-              <img
-                src="static/images/navImg2.jpg"
-                alt=""
-                height="500px"
-                class="d-none position-absolute end-0 airport d-block col-3 p-0"
-              />
+              <img src="static/images/navImg2.jpg" alt="" height="500px"
+                class="d-none position-absolute end-0 airport d-block col-3 p-0" />
               <div class="ticket d-none col-3 p-5">
                 <ul class="navbar-nav ps-3">
                   <li class="nav-item">
                     <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-uppercase"
-                      href="{% url 'view_tickets' %}"
-                      >View Tickets</a
-                    >
+                    <a class="nav-link text-uppercase" href="{% url 'view_tickets' %}">View Tickets</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
                   </li>
                 </ul>
               </div>
-              <img
-                src="static/images/navImg3.jpg"
-                alt=""
-                height="500px"
-                class="d-none position-absolute end-0 ticket d-block col-3 p-0"
-              />
+              <img src="static/images/navImg3.jpg" alt="" height="500px"
+                class="d-none position-absolute end-0 ticket d-block col-3 p-0" />
             </div>
           </div>
         </div>
@@ -256,63 +157,31 @@
     <!-- MAIN -->
 
     <!-- Image Carousel -->
-    <div
-      id="carouselExampleAutoplaying"
-      class="carousel slide shadow-lg"
-      data-bs-ride="carousel"
-    >
+    <div id="carouselExampleAutoplaying" class="carousel slide shadow-lg" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous1.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
+          <img src="static/images/imgCrous1.jpg" class="d-block w-100 object-fit-cover" alt="..." />
         </div>
         <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous2.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
+          <img src="static/images/imgCrous2.jpg" class="d-block w-100 object-fit-cover" alt="..." />
         </div>
         <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous3.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
+          <img src="static/images/imgCrous3.jpg" class="d-block w-100 object-fit-cover" alt="..." />
         </div>
         <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous4.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
+          <img src="static/images/imgCrous4.jpg" class="d-block w-100 object-fit-cover" alt="..." />
         </div>
         <div class="carousel-item" data-bs-interval="4000">
-          <img
-            src="static/images/imgCrous5.jpg"
-            class="d-block w-100 object-fit-cover"
-            alt="..."
-          />
+          <img src="static/images/imgCrous5.jpg" class="d-block w-100 object-fit-cover" alt="..." />
         </div>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev"
-      >
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next"
-      >
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -320,31 +189,16 @@
 
     <!-- Flight Schedule table Accordian -->
 
-    <div
-      class="accordion position-absolute myAccordian rounded overflow-hidden"
-      id="accordionExample"
-    >
+    <div class="accordion position-absolute myAccordian rounded overflow-hidden" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button
-            id="departure"
-            class="myaccordion-button border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            onclick="accClicked(this)"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-            disabled
-          >
+          <button id="departure" class="myaccordion-button border-0" type="button" data-bs-toggle="collapse"
+            onclick="accClicked(this)" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+            disabled>
             Flight Schedule - Departures
           </button>
         </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse show"
-          data-bs-parent="#accordionExample"
-        >
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <!-- This is for departure table -->
           <div class="accordion-body">
             <table class="myTable">
@@ -358,43 +212,29 @@
                 </tr>
               </thead>
               <tbody>
-                {% for i in departure_results %} {% if forloop.counter <= 6 %}
-                <tr class="border-bottom">
+                {% for i in departure_results %} {% if forloop.counter <= 6 %} <tr class="border-bottom">
                   <td>{{i.1}}</td>
                   <td>{{i.2}}</td>
                   <td>{{i.4}}</td>
                   <td>{{i.5}}</td>
                   <td>{{i.6}}</td>
-                </tr>
-                {% endif %} {% endfor %}
+                  </tr>
+                  {% endif %} {% endfor %}
               </tbody>
             </table>
 
-            <a href="{% url 'full_schedule' %}" class="text-decoration-none"
-              >View all flights</a
-            >
+            <a href="{% url 'full_schedule' %}" class="text-decoration-none">View all flights</a>
           </div>
         </div>
       </div>
       <div class="accordion-item rounded-0">
         <h2 class="accordion-header">
-          <button
-            class="myaccordion-button border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-            onclick="accClicked(this)"
-          >
+          <button class="myaccordion-button border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="accClicked(this)">
             Flight Schedule - Arrivals
           </button>
         </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-        >
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <!-- This is for arrival tables -->
           <div class="accordion-body">
             <table class="myTable">
@@ -408,39 +248,29 @@
                 </tr>
               </thead>
               <tbody>
-                {% for i in arrival_results %} {% if forloop.counter <= 6 %}
-                <tr class="border-bottom">
+                {% for i in arrival_results %} {% if forloop.counter <= 6 %} <tr class="border-bottom">
                   <td>{{i.1}}</td>
                   <td>{{i.2}}</td>
                   <td>{{i.3}}</td>
                   <td>{{i.5}}</td>
                   <td>{{i.6}}</td>
-                </tr>
-                {% endif %} {% endfor %}
+                  </tr>
+                  {% endif %} {% endfor %}
               </tbody>
             </table>
 
-            <a href="{% url 'full_schedule' %}" class="text-decoration-none"
-              >View all flights</a
-            >
+            <a href="{% url 'full_schedule' %}" class="text-decoration-none">View all flights</a>
           </div>
         </div>
       </div>
-      <a
-        href="https://en.allmetsat.com/metar-taf/pakistan-afghanistan.php?icao=OPKC"
-        class="myaccordion-button border-0 text-decoration-none"
-        >Live Weather Update</a
-      >
+      <a href="https://en.allmetsat.com/metar-taf/pakistan-afghanistan.php?icao=OPKC"
+        class="myaccordion-button border-0 text-decoration-none">Live Weather Update</a>
     </div>
 
     <!-- Cards -->
     <div class="cardDiv d-flex justify-content-evenly my-5 mx-auto">
       <div class="card text-bg-dark col-2 border-0">
-        <img
-          src="static/images/cardTransport.webp"
-          class="card-img"
-          alt="..."
-        />
+        <img src="static/images/cardTransport.webp" class="card-img" alt="..." />
         <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
           <h5 class="card-title pt-5">Airport Transportation</h5>
           <div class="text-center w-100 mt-auto">
@@ -479,11 +309,7 @@
         </div>
       </div>
       <div class="card text-bg-dark col-2 border-0">
-        <img
-          src="static/images/cardLostThings.webp"
-          class="card-img"
-          alt="..."
-        />
+        <img src="static/images/cardLostThings.webp" class="card-img" alt="..." />
         <div class="d-flex flex-column card-img-overlay w-100 cardOverlay p-3">
           <h5 class="card-title pt-5">Lost & Found</h5>
           <div class="text-center w-100 mt-auto">
@@ -501,10 +327,7 @@
 
     <div class="container-fluid mt-5 px-0">
       <!-- Footer -->
-      <footer
-        class="text-center text-lg-start text-white"
-        style="background-color: #929fba"
-      >
+      <footer class="text-center text-lg-start text-white" style="background-color: #929fba">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
           <!-- Section: Links -->
@@ -534,18 +357,10 @@
                   Useful Links
                 </h6>
                 <p>
-                  <a
-                    class="text-white text-decoration-none"
-                    href="schedule"
-                    >Arrivals</a
-                  >
+                  <a class="text-white text-decoration-none" href="schedule">Arrivals</a>
                 </p>
                 <p>
-                  <a
-                    class="text-white text-decoration-none"
-                    href="schedule"
-                    >Departures</a
-                  >
+                  <a class="text-white text-decoration-none" href="schedule">Departures</a>
                 </p>
                 <p>
                   <a class="text-white text-decoration-none">Resturants</a>
@@ -576,40 +391,20 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
 
                 <!-- Facebook -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #3b5998"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i
+                    class="fab fa-facebook-f"></i></a>
 
                 <!-- Twitter -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #55acee"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i
+                    class="fab fa-twitter"></i></a>
 
                 <!-- Google -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #dd4b39"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-google"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i
+                    class="fab fa-google"></i></a>
 
                 <!-- Instagram -->
-                <a
-                  class="btn btn-primary btn-floating m-1"
-                  style="background-color: #ac2bac"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i
+                    class="fab fa-instagram"></i></a>
               </div>
             </div>
             <!--Grid row-->
@@ -619,10 +414,7 @@
         <!-- Grid container -->
 
         <!-- Copyright -->
-        <div
-          class="text-center p-3"
-          style="background-color: rgba(0, 0, 0, 0.2)"
-        >
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
           © 2023 Copyright:
           <a class="text-white" href="">KarachiAirport.com</a>
         </div>
@@ -631,15 +423,11 @@
       <!-- Footer -->
     </div>
 
-    <script
-      src="https://kit.fontawesome.com/0091f48b02.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    <script src="https://kit.fontawesome.com/0091f48b02.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script src="static/app.js"></script>
   </body>
+
 </html>
