@@ -45,7 +45,8 @@ def add_my_ticket(request):
     myTickets(tick_id, ticketid = ticket_name, username=active_user1).save()
     messages.info(request, 'Ticket Successfully booked!!')
     cursor=connection.cursor()
-    cursor.execute('SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    slt = "SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE ticketNO <> %(ticketno)s"
+    cursor.execute(slt,{'ticketno':tick_id})
     results_tickets=cursor.fetchall()
     cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
     distict_tickets=cursor.fetchall()
