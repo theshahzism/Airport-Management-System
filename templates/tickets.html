@@ -63,10 +63,10 @@
                     <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="flightSchedule.html">Arrival</a>
+                    <a class="nav-link text-uppercase" href="schedule">Arrival</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="flightSchedule.html">Departures</a>
+                    <a class="nav-link text-uppercase" href="schedule">Departures</a>
                   </li>
                 </ul>
               </div>
@@ -161,10 +161,10 @@
                     <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="tickets.html">View Tickets</a>
+                    <a class="nav-link text-uppercase" href="viewtickets">View Tickets</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Book tickets</a>
+                    <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
                   </li>
                 </ul>
               </div>
@@ -185,6 +185,14 @@
         </p>
       </div>
     </div>
+    {% if messages %}
+    {{ message.tags }}
+    <div class="alert alert-primary" role="alert">
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+    </div>
+    {% endif %}
     <div class="tableSetter"></div>
     <div class="w-75 mx-auto">
       <div class="navbar bg-light">
@@ -253,16 +261,19 @@
           {% for i in ticket_results %} {% if forloop.counter <= 7 %} 
           
           <tr class="border-bottom">
-              <th scope="row">{{i.0}}</th>
-              <td>{{i.1}}</td>
+              <th scope="row">{{i.1}}</th>
               <td>{{i.2}}</td>
               <td>{{i.3}}</td>
               <td>{{i.4}}</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-outline-dark border-0 text-white">
-                  Book
-                </button>
-              </td>
+              <td>{{i.5}}</td>
+              <form action='add_my_ticket' method="POST">
+                {% csrf_token %}
+                    <input type="hidden" name="tick_id" value="{{ i.0 }}" id="tick_id">
+                    
+                    <td>
+                      <button type="submit" class="btn btn-primary btn-outline-dark border-0 text-white addtocartbtn">Book</button>
+                    </td> 
+              </form>
             </tr>
             {% endif %} {% endfor %}
         </tbody>
@@ -303,10 +314,10 @@
                   Useful Links
                 </h6>
                 <p>
-                  <a class="text-white text-decoration-none" href="flightSchedule.html">Arrivals</a>
+                  <a class="text-white text-decoration-none" href="schedule">Arrivals</a>
                 </p>
                 <p>
-                  <a class="text-white text-decoration-none" href="flightSchedule.html">Departures</a>
+                  <a class="text-white text-decoration-none" href="schedule">Departures</a>
                 </p>
                 <p>
                   <a class="text-white text-decoration-none">Resturants</a>

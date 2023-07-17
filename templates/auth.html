@@ -24,21 +24,30 @@
 					offering travel excellence for its passengers.</p>
 				</div>
 				<div class="signInDiv container rounded-end">
-					<form class="w-100">
+					<form class="w-100" method="POST">
+						{% csrf_token %}
 						<center>
 							<div class="my-3">
 								<!-- Your Brand -->
+								{% if messages %}
+								{{ message.tags }}
+								<div class="alert alert-primary" role="alert">
+									{% for message in messages %}
+									{{ message }}
+									{% endfor %}
+								</div>
+								{% endif %}
 								<p class="h2 fst-italic fw-bold p-1 colourThemeText my-0">Sign In</p>
 								<p class="fst-italic text-uppercase">to your account</p>
 							</div>
 							<div class="input-group mb-2">
 								<span class="input-group-text" id="addon1"><i class="fa-solid fa-user"></i></span>
-								<input type="email" class="form-control" placeholder="Email" aria-describedby="addon1"
+								<input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="addon1"
 									id="signInEmail" required>
 							</div>
 							<div class="input-group mb-1">
 								<span class="input-group-text" id="addon2"><i class="fa-solid fa-key"></i></span>
-								<input type="password" class="form-control border-end-0" placeholder="Password"
+								<input type="password" name="password" class="form-control border-end-0" placeholder="Password"
 									aria-describedby="addon2" id="signInPass" required>
 								<button type="button" class="input-group-text bg-body hide"><i
 										class="fa-solid fa-eye"></i></button>
@@ -46,11 +55,7 @@
 							<a class="d-block text-end text-decoration-none fw-medium colourThemeText"
 								id="forgotPass">Forgot
 								password?</a>
-							<!-- <div class="d-none form-text text-danger bg-body fw-semibold rounded m-1 w-100"
-								id="accountCheck">
-								Incorrect email or password
-							</div> -->
-							<button type="button" class="btn btn-primary w-100 fw-medium mt-2 colourThemeBtn"
+							<button type="submit" class="btn btn-primary w-100 fw-medium mt-2 colourThemeBtn"
 								id="signInBtn">CONTINUE</button>
 							<div class="text-center w-100 my-3">
 								<span class="horRule"> or </span>
@@ -63,7 +68,7 @@
 										class="fa-brands fa-facebook me-2"></i>Login
 									with Facebook</button>
 							</div>
-							<p>Don't have an account? <a id="goToSignUp"
+							<p>Don't have an account? <a href="register"
 									class="d-inline-block text-decoration-none fw-medium colourThemeText">Sign
 									up</a></p>
 						</center>
@@ -81,45 +86,49 @@
 						screen. Don't miss out - join now and experience travel heaven at Karachi Airport!</p>
 				</div>
 				<div class="signUpDiv container rounded-end">
-					<form class="w-100">
+					<form class="w-100" method="POST">
+						{% csrf_token %}
 						<center>
 							<div class="my-3">
 								<!-- Your Brand -->
+								{% if messages %}
+								{{ message.tags }}
+								<div class="alert alert-primary" role="alert">
+									{% for message in messages %}
+									{{ message }}
+									{% endfor %}
+								</div>
+								{% endif %}
 								<p class="h2 fst-italic fw-bold p-1 colourThemeText my-0">Sign up</p>
 								<p class="fst-italic text-uppercase">and join our community</p>
 							</div>
 							<div class="input-group mt-0 mb-2">
-								<span class="input-group-text" id="fName"><i class="fa-solid fa-person"></i></span>
-								<input type="text" class="form-control me-2 rounded-end" placeholder="Firstname"
-									aria-describedby="fName" id="signUpFName" required>
 								<span class="input-group-text rounded-start" id="lName"><i
 										class="fa-solid fa-person"></i></i></span>
-								<input type="text" class="form-control" placeholder="Lastname" aria-describedby="lName"
+								<input type="text" name="first_name"  class="form-control" placeholder="First Name" aria-describedby="lName"
+									id="signUpLName" required>
+								<span class="input-group-text rounded-start" id="lName"><i
+										class="fa-solid fa-person"></i></i></span>
+								<input type="text" name="last_name"  class="form-control" placeholder="Last Name" aria-describedby="lName"
 									id="signUpLName" required>
 							</div>
 							<div class="input-group mb-2">
+								<span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+								<input type="text" name="username" class="form-control" placeholder="Username" required>
+							</div>
+							<div class="input-group mb-2">
 								<span class="input-group-text" id="email-text"><i class="fa-solid fa-user"></i></span>
-								<input type="email" class="form-control" placeholder="Email"
+								<input type="email" name="email" class="form-control" placeholder="Email"
 									aria-describedby="email-text" id="signUpEmail" required>
 							</div>
 							<div class="input-group mb-2">
 								<span class="input-group-text" id="pass-text1"><i class="fa-solid fa-key"></i></span>
-								<input type="password" class="form-control border-end-0" placeholder="Password"
-									aria-describedby="pass-text1" id="signUpPass" required>
+								<input type="password" name="password" class="form-control border-end-0" placeholder="Password"
+									aria-describedby="pass-text1" id="exampleInputPassword1" required>
 								<button type="button" class="input-group-text bg-body hide"><i
 										class="fa-solid fa-eye"></i></button>
 							</div>
-							<div class="input-group mb-2">
-								<span class="input-group-text" id="pass-text2"><i class="fa-solid fa-key"></i></span>
-								<input type="password" class="form-control border-end-0" placeholder="Confirm Password"
-									aria-describedby="pass-text2" id="signUpConPass" required>
-								<button type="button" class="input-group-text bg-body hide"><i
-										class="fa-solid fa-eye"></i></button>
-							</div>
-							<!-- <div class="d-none form-text text-danger bg-body fw-semibold m-1 w-100" id="passCheck">
-								Passwords do not match
-							</div> -->
-							<button type="button" class="btn btn-primary w-100 fw-medium mt-2 colourThemeBtn"
+							<button type="submit" class="btn btn-primary w-100 fw-medium mt-2 colourThemeBtn"
 								id="signUpBtn">CONTINUE</button>
 							<div class="text-center w-100 my-2">
 								<span class="horRule"> or </span>
@@ -132,7 +141,7 @@
 										id="signUpFb"></i>Sign up
 									with Facebook</button>
 							</div>
-							<p>Already have an account? <a id="goToSignIn"
+							<p>Already have an account? <a href="login"
 									class="d-inline-block text-decoration-none fw-medium colourThemeText">Sign
 									in</a></p>
 						</center>

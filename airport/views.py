@@ -1,15 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import AirlineOperates
-from .models import AirportPlace
-from .models import Restaurants
-from .models import Terminal
-from .models import Department
-from .models import Security
-from .models import Staff
-from .models import Engineer
 from .models import Tickets
-from .models import Tickets_Luggage
+from .models import myTickets
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+
 
 from django.db import connection
 
@@ -33,14 +31,86 @@ def full_schedule(request):
 
 def view_tickets(request):
     cursor=connection.cursor()
-    cursor.execute('SELECT airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    cursor.execute('SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
     results_tickets=cursor.fetchall()
     cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
     distict_tickets=cursor.fetchall()
     return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})
 
+@login_required
+def add_my_ticket(request):
+    active_user1 = request.session['username']
+    tick_id = request.POST.get('tick_id')
+    ticket_name = Tickets.objects.get(ticketNO = tick_id)
+    myTickets(tick_id, ticketid = ticket_name, username=active_user1).save()
+    messages.info(request, 'Ticket Successfully booked!!')
+    cursor=connection.cursor()
+    cursor.execute('SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    results_tickets=cursor.fetchall()
+    cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    distict_tickets=cursor.fetchall()
+    return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})
+
+@login_required
+def show_tickets(request):
+    active_user1 = request.session['username']
+    cursor=connection.cursor()
+    select_stmt = "SELECT airlineName,destination,departureTime,airlineClass,price,username FROM airport_airlineoperates INNER JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id INNER JOIN airport_mytickets ON airport_tickets.ticketNO = airport_mytickets.id WHERE username = %(active_user)s"
+    cursor.execute(select_stmt,{'active_user':active_user1})
+    ticket=cursor.fetchall()
+    return render(request, "mytickets.html", {'all':ticket})
 
 
-# def tickets(request):
-#     airline=AirlineOperates.objects.all
-#     return render(request,'tickets.html',{'all':airline})
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if not User.objects.filter(username = username).exists():
+            messages.info(request, 'Invalid Username')
+            return redirect('login')
+        
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            messages.info(request, 'Invalid Password')
+            return redirect('login')
+        else:
+            login(request, user)
+            request.session['username'] = username
+            return redirect('homepage')
+    return render(request, 'auth.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('homepage')
+
+def register_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = User.objects.filter(username = username)
+
+        if user.exists():
+            messages.info(request, 'Username already taken')
+            return redirect('register')
+
+        user = User.objects.create(
+            username = username,
+            first_name = first_name,
+            last_name = last_name,
+            email = email)
+        user.set_password(password)
+        user.save()
+        messages.info(request, 'Account created successfully')
+        return redirect('login')
+    return render(request, 'register.html')
+
+def user_profile(request):
+    return render(request,'userProfile.html')
