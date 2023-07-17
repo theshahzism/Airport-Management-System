@@ -1,9 +1,8 @@
 from django.db import models
-from viewflow.fields import CompositeKey
+from django.contrib.auth.models import User
 
 class AirportPlace(models.Model):
     placeID = models.AutoField(primary_key=True)
-    location = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
 
     class Meta:
@@ -18,11 +17,13 @@ class Restaurants(models.Model):
 
     def __str__(self):
         return f"{self.placeID} - {self.brand}"
+    location = models.CharField(max_length=50)
 
 
 class Terminal(models.Model):
     placeID = models.ForeignKey("AirportPlace", on_delete=models.CASCADE)
     capacity = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
 
     # def __str__(self):
     #     return f"{self.placeID} - {self.capacity}"
@@ -88,8 +89,7 @@ class AirlineOperates(models.Model):
 
 
 class Tickets(models.Model):
-    id = CompositeKey(columns=['ticketNO', 'seatNO'])
-    ticketNO = models.CharField(max_length=50)
+    ticketNO = models.IntegerField(primary_key=True)
     seatNO = models.CharField(max_length=50)
     airlineID = models.ForeignKey("AirlineOperates", on_delete=models.CASCADE)
     price = models.PositiveBigIntegerField()
@@ -118,3 +118,8 @@ class Tickets_Luggage(models.Model):
 
 
     
+class myTickets(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    id = models.IntegerField(primary_key=True),
+    ticketid = models.ForeignKey("Tickets", on_delete=models.CASCADE)
+    username = models.CharField(max_length=50, default="")

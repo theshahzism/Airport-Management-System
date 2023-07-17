@@ -45,8 +45,18 @@
           <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"
             ><i class="fa-solid fa-arrow-rotate-right"></i
           ></span>
-          <a class="text-black text-decoration-none mx-3 align-self-center" href="">Profile<i
-              class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i></a>
+          {% if request.user.is_authenticated %}
+          <a class="text-black text-decoration-none mx-3 align-self-center" href="editprofile">{{ request.user.username }}<i
+            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+          </a>
+          <a class="text-black text-decoration-none mx-3 align-self-center" href="logout">Logout<i
+            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+          </a>
+          {% else %}
+          <a class="text-black text-decoration-none mx-3 align-self-center" href="login">signIn<i
+            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+          </a>
+          {% endif %}
         </div>
         <div
           class="offcanvas offcanvas-start"
@@ -104,14 +114,14 @@
                   <li class="nav-item">
                     <a
                       class="nav-link text-uppercase"
-                      href="flightSchedule.html"
+                      href="schedule"
                       >Arrival</a
                     >
                   </li>
                   <li class="nav-item">
                     <a
                       class="nav-link text-uppercase"
-                      href="flightSchedule.html"
+                      href="schedule"
                       >Departures</a
                     >
                   </li>
@@ -227,7 +237,7 @@
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Book tickets</a>
+                    <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
                   </li>
                 </ul>
               </div>
@@ -526,14 +536,14 @@
                 <p>
                   <a
                     class="text-white text-decoration-none"
-                    href="flightSchedule.html"
+                    href="schedule"
                     >Arrivals</a
                   >
                 </p>
                 <p>
                   <a
                     class="text-white text-decoration-none"
-                    href="flightSchedule.html"
+                    href="schedule"
                     >Departures</a
                   >
                 </p>

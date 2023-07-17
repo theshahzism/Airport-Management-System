@@ -30,10 +30,17 @@
                             <i class="fa-solid fa-arrow-rotate-right"></i>
                         </div>
                     </div>
-                    <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"><i
-                            class="fa-solid fa-arrow-rotate-right"></i></span>
-                    <a class="text-black text-decoration-none mx-3 align-self-center" href="">Profile<i
-                            class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i></a>
+                    <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"><i></i>
+                        </span>
+                        {% if request.user.is_authenticated %}
+                        <a class="text-black text-decoration-none mx-3 align-self-center" href="">{{ request.user.username }}<i
+                          class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+                        </a>
+                        {% else %}
+                        <a class="text-black text-decoration-none mx-3 align-self-center" href="login">signIn<i
+                          class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
+                        </a>
+                        {% endif %}
                 </div>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -187,43 +194,47 @@
 
         <!-- MAIN -->
 
-
-        <div class="mx-auto col-6 border border-black overflow-hidden rounded"
-            style="margin-top: 15vh !important; background-color: rgba(255, 255, 255, 0.9);">
-            <div class="mx-5 p-5">
-                <p class="d-block h1 fst-italic fw-bold colourThemeText">Account center</p>
-                <div class="mb-3 w-100">
-                    <label for="accFname" class="form-label fs-5 fw-semibold">Firstname</label>
-                    <input type="text" class="inputFields form-control" id="accFname" placeholder="Firstname" readonly>
-                </div>
-                <div class="mb-3 w-100">
-                    <label for="accLname" class="form-label fs-6 fw-semibold">Lastname</label>
-                    <input type="text" class="inputFields form-control" id="accLname" placeholder="Lastname" readonly>
-                </div>
-                <div class="mb-3 w-100">
-                    <label for="accEmail" class="form-label fs-5 fw-semibold">Email</label>
-                    <input type="email" class="inputFields form-control" id="accEmail" placeholder="Email" readonly>
-                </div>
-                <div class="mb-3 w-100">
-                    <label for="accPass" class="form-label fs-5 fw-semibold">Password</label>
-                    <input type="password" class="inputFields form-control" id="accPass" placeholder="Password"
-                        readonly>
-                </div>
-                <div class="mb-3 w-100">
-                    <label for="accPhone" class="form-label fs-5 fw-semibold">Phone no#</label>
-                    <input type="tel" class="inputFields form-control" id="accPhone" placeholder="Phone no#" readonly>
-                </div>
-                <div class="d-flex">
-                    <button type="button" class="btn text-white btn-danger btn-outline-dark fw-semibold me-auto"
-                        id="signOut">Sign out</button>
-                    <button type="button" class="btn text-white btn-primary btn-outline-dark fw-semibold me-2"
-                        id="edit">Edit</button>
-                    <button type="button" class="btn text-white btn-success btn-outline-dark fw-semibold" id="save"
-                        disabled>Save
-                        Changes</button>
+        <form class="w-100" method="POST">
+            {% csrf_token %}
+            {% if messages %}
+            {{ message.tags }}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="mx-auto col-6 border border-black overflow-hidden rounded"
+                style="margin-top: 15vh !important; background-color: rgba(255, 255, 255, 0.9);">
+                <div class="mx-5 p-5">
+                    <p class="d-block h1 fst-italic fw-bold colourThemeText">Account center</p>
+                    <div class="mb-3 w-100">
+                        <label for="accFname" class="form-label fs-5 fw-semibold">First name</label>
+                        <input type="text" name="first_name" class="inputFields form-control" id="accFname" value={{request.user.first_name}} readonly>
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label for="accLname" class="form-label fs-6 fw-semibold">Last name</label>
+                        <input type="text" name="last_name" class="inputFields form-control" id="accLname" value={{request.user.last_name}} readonly>
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label for="accEmail" class="form-label fs-5 fw-semibold">Email</label>
+                        <input type="email" name="email" class="inputFields form-control" id="accEmail" value={{request.user.email}} readonly>
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label for="accPass" class="form-label fs-5 fw-semibold">Change Password</label>
+                        <input type="password" name="password" class="inputFields form-control" id="exampleInputPassword1" placeholder="New Password" readonly>
+                    </div>
+                    <div class="d-flex">
+                        <a class="btn btn-primary" href="logout" role="button"
+                            id="signOut">Sign out</button> </a>
+                        <button type="button" class="btn text-white btn-primary btn-outline-dark fw-semibold me-2"
+                            id="edit">Edit</button>
+                        <button type="submit" class="btn text-white btn-success btn-outline-dark fw-semibold">Save
+                            Changes</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
 
 
 
@@ -262,10 +273,10 @@
                                     Useful Links
                                 </h6>
                                 <p>
-                                    <a class="text-white text-decoration-none" href="flightSchedule.html">Arrivals</a>
+                                    <a class="text-white text-decoration-none" href="schedule">Arrivals</a>
                                 </p>
                                 <p>
-                                    <a class="text-white text-decoration-none" href="flightSchedule.html">Departures</a>
+                                    <a class="text-white text-decoration-none" href="schedule">Departures</a>
                                 </p>
                                 <p>
                                     <a class="text-white text-decoration-none">Resturants</a>

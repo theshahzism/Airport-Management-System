@@ -23,7 +23,15 @@ urlpatterns = [
     path("", views.homePage,name='homepage'),
     path("schedule", views.full_schedule,name='full_schedule'),
     path("viewtickets", views.view_tickets,name='view_tickets'),
-]
+    path('add_my_ticket', views.add_my_ticket, name='add_my_ticket'),
+    path('login', views.login_user, name='login'),
+    path('register', views.register_user, name='register'),
+    path('logout', views.logout_user, name='logout'),
+    path('editprofile', views.editprofile, name='editprofile'),
+    path('mytickets', views.show_tickets, name='my_tickets'),
+    path('accounts/login/',views.login_user, name='login'),
+    ]
+
 
 admin.site.index_title='Airport Management System'
 admin.site.site_header='Airport Management System Admin'
