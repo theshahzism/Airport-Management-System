@@ -11,43 +11,36 @@
 	</head>
 
 	<body>
-        <div class="body1 position-relative">
-            <div id="signUp" class="d-flex justify-content-center">
+		<div class="body1 position-relative">
+			<div id="signUp" class="d-flex justify-content-center">
 				<div id="signPageDiv2" class="signPageDiv container rounded-start flex-column">
 					<p
 						class="fs-1 text-white fw-bolder fst-italic text-center bg-opacity-50 bg-black rounded-top p-3 w-100 mb-0">
 						Sign up now!</p>
-					<p class="fs-6 text-white fw-medium bg-opacity-50 bg-black rounded-bottom p-3 w-100">Join Karachi Airport
-						today and unlock a world of exclusive travel benefits! Sign up and Say hello to convenience and comfort
+					<p class="fs-6 text-white fw-medium bg-opacity-50 bg-black rounded-bottom p-3 w-100">Join Karachi
+						Airport
+						today and unlock a world of exclusive travel benefits! Sign up and Say hello to convenience and
+						comfort
 						delivered straight to your
 						screen. Don't miss out - join now and experience travel heaven at Karachi Airport!</p>
-				    </div>
-				    <div class="signUpDiv container rounded-end">
+				</div>
+				<div class="signUpDiv container rounded-end">
 					<form class="w-100" method="POST">
-						{% csrf_token %}
 						<center>
 							<div class="my-3">
 								<!-- Your Brand -->
-								{% if messages %}
-								{{ message.tags }}
-								<div class="alert alert-primary" role="alert">
-									{% for message in messages %}
-									{{ message }}
-									{% endfor %}
-								</div>
-								{% endif %}
 								<p class="h2 fst-italic fw-bold p-1 colourThemeText my-0">Sign up</p>
 								<p class="fst-italic text-uppercase">and join our community</p>
 							</div>
 							<div class="input-group mt-0 mb-2">
 								<span class="input-group-text rounded-start" id="lName"><i
 										class="fa-solid fa-person"></i></i></span>
-								<input type="text" name="first_name"  class="form-control" placeholder="First Name" aria-describedby="lName"
-									id="signUpLName" required>
+								<input type="text" name="first_name" class="form-control" placeholder="First Name"
+									aria-describedby="lName" id="signUpLName" required>
 								<span class="input-group-text rounded-start" id="lName"><i
 										class="fa-solid fa-person"></i></i></span>
-								<input type="text" name="last_name"  class="form-control" placeholder="Last Name" aria-describedby="lName"
-									id="signUpLName" required>
+								<input type="text" name="last_name" class="form-control" placeholder="Last Name"
+									aria-describedby="lName" id="signUpLName" required>
 							</div>
 							<div class="input-group mb-2">
 								<span class="input-group-text"><i class="fa-solid fa-user"></i></span>
@@ -60,11 +53,23 @@
 							</div>
 							<div class="input-group mb-2">
 								<span class="input-group-text" id="pass-text1"><i class="fa-solid fa-key"></i></span>
-								<input type="password" name="password" class="form-control border-end-0" placeholder="Password"
-									aria-describedby="pass-text1" id="exampleInputPassword1" required>
+								<input type="password" name="password" class="form-control border-end-0"
+									placeholder="Password" aria-describedby="pass-text1" id="exampleInputPassword1"
+									required>
 								<button type="button" class="input-group-text bg-body hide"><i
 										class="fa-solid fa-eye"></i></button>
 							</div>
+
+							{% csrf_token %}
+							{% if messages %}
+							{{ message.tags }}
+							<div class="form-text fs-6 text-danger bg-body fw-semibold rounded m-1 w-100" role="alert">
+								{% for message in messages %}
+								{{ message }}
+								{% endfor %}
+							</div>
+							{% endif %}
+
 							<button type="submit" class="btn btn-primary w-100 fw-medium mt-2 colourThemeBtn"
 								id="signUpBtn">CONTINUE</button>
 							<div class="text-center w-100 my-2">
@@ -90,7 +95,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 			crossorigin="anonymous"></script>
-			
+
 		<script src="/static/auth.js" type="module"></script>
 	</body>
 

@@ -68,13 +68,13 @@ def login_user(request):
         password = request.POST.get('password')
 
         if not User.objects.filter(username = username).exists():
-            messages.info(request, 'Invalid Username')
+            messages.info(request, 'User does not exist')
             return redirect('login')
         
         user = authenticate(username=username, password=password)
 
         if user is None:
-            messages.info(request, 'Invalid Password')
+            messages.info(request, 'Invalid email or password')
             return redirect('login')
         else:
             login(request, user)
