@@ -160,4 +160,7 @@ def search(request):
         return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})
     
 def restaurants(request):
-    return render(request,'restuarants.html')
+    cursor=connection.cursor()
+    cursor.execute('SELECT * FROM airport_restaurants')
+    results_restaurants=cursor.fetchall()
+    return render(request,'restuarants.html',{"restaurants_results":results_restaurants})
