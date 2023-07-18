@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Karachi Airport</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+
+    <body>
+        <!-- NavBar -->
+
+        <nav class="navbar fixed-top bg-body bg-opacity-75">
+            <div class="container-fluid ps-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand h1 fs-1 font-monospace fw-bolder text-uppercase my-auto mx-auto ps-3"
+                    href="{% url 'homepage' %}">Karachi Airport<i class="fa-solid fa-plane mx-2"></i></a>
+                <div class="d-flex flex-row">
+                    <div class="d-flex flex-row my-auto">
+                        <span id="wLogo" class="fs-6"><i class="fa-solid fa-arrow-rotate-right"></i></span>
+                        <div id="wTemp" class="mx-2 fs-6">
+                            <i class="fa-solid fa-arrow-rotate-right"></i>
+                        </div>
+                    </div>
+                    <span id="curDate" class="my-auto mx-2 fs-6 fw-semibold"><i
+                            class="fa-solid fa-arrow-rotate-right"></i></span>
+                    {% if request.user.is_authenticated %}
+                    <a class="text-white bg-primary shadow-lg text-decoration-none mx-1 align-self-center p-2 rounded-pill p-2"
+                        href="editprofile">{{ request.user.username }}<i class="fa-solid fa-user ms-1 "></i>
+                    </a>
+                    <a class="text-white bg-primary shadow-lg text-decoration-none mx-1 align-self-center p-2 rounded-pill p-2"
+                        href="logout">Logout<i class="fa-solid fa-user ms-1 "></i>
+                    </a>
+                    {% else %}
+                    <a class="text-white bg-primary shadow-lg text-decoration-none mx-1 align-self-center p-2 rounded-pill p-2"
+                        href="login">Login<i class="fa-solid fa-user ms-1 "></i>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-body overflow-hidden position-relative p-0">
+                        <div class="row">
+                            <div class="col-2 p-5">
+                                <ul class="navbar-nav flex-grow-1 ps-5 my-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
+                                            onclick="navigate(this)">Flight</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-semibold text-uppercase mainNav"
+                                            onclick="navigate(this)">Services</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-semibold text-uppercase mainNav"
+                                            onclick="navigate(this)">Tickets</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-semibold text-uppercase" href="#">About Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex col-1 p-5" style="height: 500px !important">
+                                <div class="vr"></div>
+                            </div>
+                            <div class="flight d-block col-3 p-5">
+                                <ul class="navbar-nav ps-3">
+                                    <li class="nav-item">
+                                        <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="schedule">Arrival</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="schedule">Departures</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="/static/images/navImg1.jpg" alt="" height="500px"
+                                class="position-absolute end-0 flight d-block col-3 p-0" />
+                            <div class="service d-none col-3 p-5">
+                                <ul class="navbar-nav ps-3">
+                                    <li class="nav-item">
+                                        <p class="fs-5 fw-semibold text-uppercase">
+                                            Food & Beverages
+                                        </p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="restaurants">Resturants</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="service d-none col-3 p-5">
+                                <ul class="navbar-nav ps-3">
+                                    <li class="nav-item">
+                                        <p class="fs-5 fw-semibold text-uppercase">Shopping</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="#">Stores & Mall</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="/static/images/navImg4.jpg" alt="" height="500px"
+                                class="position-absolute end-0 service d-block col-3 p-0" />
+                            <div class="ticket d-none col-3 p-5">
+                                <ul class="navbar-nav ps-3">
+                                    <li class="nav-item">
+                                        <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="{% url 'view_tickets' %}">View
+                                            Tickets</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="/static/images/navImg3.jpg" alt="" height="500px"
+                                class="d-none position-absolute end-0 ticket d-block col-3 p-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MAIN -->
+        <div class="" style="height: 200px;"></div>
+        <div class="container">
+            <section class="my-3 bg-light p-5">
+                <div class="row">
+                    <div class="col-md-6 gx-5 mb-1">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5"
+                            data-mdb-ripple-color="light">
+                            <img src="/static/images/storeImg1.jpg" class="img-fluid" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 gx-5 mb-1">
+                        <h4><strong>Karachi Airport's shopping experience for savvy travellers</strong></h4>
+                        <p class="text-muted">
+                            Discover a shopper's paradise at our vibrant collection of malls and shops. Explore a
+                            diverse range
+                            of
+                            retail
+                            destinations offering a captivating blend of fashion, lifestyle, and entertainment. From
+                            high-end
+                            luxury
+                            brands to
+                            trendy boutiques and everything in between, our malls showcase a curated selection of stores
+                            to
+                            cater to
+                            every style and
+                            taste.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="my-3 bg-light p-5">
+                <div class="row">
+                    <div class="col-md-6 gx-5 mb-1">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5"
+                            data-mdb-ripple-color="light">
+                            <img src="/static/images/storeImg2.jpg" class="img-fluid" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 gx-5 mb-1">
+                        <h4><strong>Your one stop Airport shops</strong></h4>
+                        <p class="text-muted">
+                            Recharge at the diverse dining options available, ranging from popular eateries to gourmet
+                            restaurants,
+                            where you can
+                            savor delectable cuisines from around the world. Engage in family-friendly activities, catch
+                            a movie
+                            at
+                            the
+                            state-of-the-art cinema, or simply unwind at one of the cozy cafes. With ample parking
+                            facilities
+                            and
+                            convenient access,
+                            our malls and shops are a hub of excitement and convenience.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="my-3 bg-light p-5">
+                <div class="row">
+                    <div class="col-md-6 gx-5 mb-1">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5"
+                            data-mdb-ripple-color="light">
+                            <img src="/static/images/storeImg3.jpg" class="img-fluid" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 gx-5 mb-1">
+                        <h4><strong>The Mall offers best selling items</strong></h4>
+                        <p class="text-muted">
+                            Indulge in a day of retail therapy as you browse through the latest fashion trends,
+                            accessories,
+                            beauty products,
+                            electronics, home decor, and much more. Immerse yourself in a world of choices, where
+                            renowned
+                            international brands and
+                            local artisans converge to offer a unique shopping experience. With spacious and
+                            well-designed
+                            interiors,
+                            our malls
+                            provide a comfortable and enjoyable atmosphere for leisurely strolls and exploration.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- footer -->
+
+        <div class="container-fluid mt-5 px-0">
+            <!-- Footer -->
+            <footer class="text-center text-lg-start text-white" style="background-color: #929fba">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Links -->
+                    <section class="">
+                        <!--Grid row-->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="text-white text-uppercase mb-4 font-weight-bold">
+                                        Karachi Airport
+                                    </h6>
+                                </a>
+                                <p>
+                                    Here you can use rows and columns to organize your footer
+                                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit.
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">
+                                    Useful Links
+                                </h6>
+                                <p>
+                                    <a class="text-white text-decoration-none" href="schedule">Arrivals</a>
+                                </p>
+                                <p>
+                                    <a class="text-white text-decoration-none" href="schedule">Departures</a>
+                                </p>
+                                <p>
+                                    <a class="text-white text-decoration-none" href="restaurants">Resturants</a>
+                                </p>
+                                <p>
+                                    <a class="text-white text-decoration-none">Transportation</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                                <p><i class="fas fa-home mr-3"></i> Karachi, KHI 42343, PAk</p>
+                                <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                                <p><i class="fas fa-phone mr-3"></i> + 92 330 5678890</p>
+                                <p><i class="fas fa-print mr-3"></i> + 92 336 5678890</p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-2 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+                                <!-- Facebook -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!"
+                                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                                <!-- Twitter -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!"
+                                    role="button"><i class="fab fa-twitter"></i></a>
+
+                                <!-- Google -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!"
+                                    role="button"><i class="fab fa-google"></i></a>
+
+                                <!-- Instagram -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!"
+                                    role="button"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <!--Grid row-->
+                    </section>
+                    <!-- Section: Links -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                    © 2023 Copyright:
+                    <a class="text-white" href="#">KarachiAirport.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </div>
+
+        <script src="https://kit.fontawesome.com/0091f48b02.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+        <script src="/static/app.js"></script>
+    </body>
+
+</html>
