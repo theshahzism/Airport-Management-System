@@ -6,8 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django import forms
-
 
 from django.db import connection
 
@@ -160,3 +158,6 @@ def search(request):
         return redirect('tickets.html')
     else:
         return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})
+    
+def restaurants(request):
+    return render(request,'restuarants.html')

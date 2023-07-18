@@ -33,6 +33,7 @@ urlpatterns = [
     path('accounts/login/register', views.register_user, name='register'),
     path('accounts/login/login',views.login_user, name='login'),
     path('search', views.search, name='search'),
+    path('restaurants', views.restaurants, name='restaurants'),
     ]
 
 
