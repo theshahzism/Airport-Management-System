@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django import forms
 
 
 from django.db import connection
@@ -144,3 +144,19 @@ def editprofile(request):
 
 
     return render(request,'editprofile.html')
+
+def search(request):
+    cursor=connection.cursor()
+    answer = request.POST.get('dropdown')
+    query = "SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price,username FROM airport_airlineoperates INNER JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id INNER JOIN airport_mytickets ON airport_tickets.ticketNO = airport_mytickets.id WHERE destination = %(desti)s"
+    
+    cursor.execute(query,{'desti':answer})
+    results_tickets=cursor.fetchall()
+
+    cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
+    distict_tickets=cursor.fetchall()
+
+    if request.method == 'GET':
+        return redirect('tickets.html')
+    else:
+        return render(request,"tickets.html",{'ticket_results':results_tickets,'tickets_distinct':distict_tickets})

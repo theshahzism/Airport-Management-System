@@ -201,49 +201,15 @@
           <p class="h6 mx-5 fw-medium">DD/MM/YYYY</p>
         </div>
         <div class="mx-auto">
-          <select class="form-select" aria-label="Default select example">
-            <option value="" selected>Destination</option>
-            {% for i in tickets_distinct %}
-            <option value="1">{{i.0}}</option>
-            <!-- 
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            <option value="3">Four</option>
-            -->
-            {% endfor %}
-          </select>
+          <form action="{% url 'search' %}" method="POST">{% csrf_token %}
+            <select class="form-select" name="dropdown" aria-label="Default select example">
+              <option value="" selected>Destination</option>
+              {% for i in tickets_distinct %}
+                <option value="{{ i.0 }}">{{i.0}}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" value="search"></form>
         </div>
-        <div class="mx-auto">
-          <input class="form-control" type="date" id="tickDate" />
-        </div>
-        <ul class="nav mx-auto">
-          <li class="nav-item my-3">
-            <div class="input-group mb-0">
-              <span class="input-group-text">Sort By</span>
-              <select id="sortBy" class="form-select" onchange="sortFunc()">
-                <option value="0" selected>Time</option>
-                <option value="1">Price</option>
-                <option value="2">Class</option>
-              </select>
-            </div>
-          </li>
-          <li class="nav-item my-auto mx-3">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="order" id="ascending" checked value="false"
-                onclick="sortFunc()" />
-              <label class="form-check-label" for="ascending">
-                Ascending
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="order" id="descending" value="true"
-                onclick="sortFunc()" />
-              <label class="form-check-label" for="descending">
-                Descending
-              </label>
-            </div>
-          </li>
-        </ul>
       </div>
 
       <table class="table table-hover table-striped align-middle bg-white ticketTable">
@@ -258,7 +224,7 @@
           </tr>
         </thead>
         <tbody class="">
-          {% for i in ticket_results %} {% if forloop.counter <= 7 %} 
+          {% for i in ticket_results %} 
           
           <tr class="border-bottom">
               <th scope="row">{{i.1}}</th>
@@ -275,7 +241,7 @@
                     </td> 
               </form>
             </tr>
-            {% endif %} {% endfor %}
+            {% endfor %}
         </tbody>
       </table>
     </div>
