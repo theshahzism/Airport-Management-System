@@ -8,4 +8,6 @@
 #pip install mysql
 #pip install django-jazzmin
 #Then, run the server by the following command:
+#python manage.py makemigrations
+#python manage.py migrate
 #python manage.py runserver
