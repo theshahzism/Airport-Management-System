@@ -130,14 +130,12 @@ nav {
     margin-top: 100px;
 }
 
-.airport,
 .ticket,
 .service,
 .flight {
     animation: 1s ease-out 0s 1 fadeInAnimation;
 }
 
-img.airport,
 img.ticket,
 img.service,
 img.flight {
@@ -276,7 +274,7 @@ td {
     font-weight: 400;
     box-shadow: 3px 3px 10px black;
     transition: all 0.3s ease-in-out;
-    transform: scale(1.05) perspective(500px) translateZ(10px);
+    transform: scale(1.03) perspective(500px) translateZ(7px);
 }
 
 /* User Profile page */

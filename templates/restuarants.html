@@ -283,7 +283,7 @@
       >
         <thead class="bg-light">
           <tr class="table-dark">
-            <th scope="col">Place ID</th>
+            <th scope="col">S No#</th>
             <th scope="col">Brand</th>
             <th scope="col">Location</th>
           </tr>
@@ -291,7 +291,7 @@
         <tbody class="">
           {% for i in restaurants_results %}
           <tr>
-            <th scope="row" class="col-1">{{i.0}}</th>
+            <th scope="row" class="col-1">{{forloop.counter}}</th>
             <td class="col-6">{{i.1}}</td>
             <td class="col-6">{{i.2}}</td>
           </tr>

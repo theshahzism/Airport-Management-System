@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="/static/style.css" />
   </head>
 
   <body class="position-relative">
@@ -43,156 +43,152 @@
                 class="fa-solid fa-user p-2 rounded-circle border-3 border-dark"></i>
             </a>
             {% endif %}
-            </div>
           </div>
         </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel">
+      </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-body overflow-hidden position-relative p-0">
-            <div class="row">
-                <div class="col-2 p-5">
-                    <ul class="navbar-nav flex-grow-1 ps-5 my-1">
-                        <li class="nav-item">
-                            <a class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
-                                onclick="navigate(this)">Flight</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                                onclick="navigate(this)">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                                onclick="navigate(this)">Airport</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5 fw-semibold text-uppercase mainNav"
-                                onclick="navigate(this)">Tickets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5 fw-semibold text-uppercase" href="#">About Us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="d-flex col-1 p-5" style="height: 500px !important">
-                    <div class="vr"></div>
-                </div>
-                <div class="flight d-block col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="schedule">Arrival</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="schedule">Departures</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flight d-block col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">
-                                Airport Guides
-                            </p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Something</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Something</a>
-                        </li>
-                    </ul>
-                </div>
-                <img src="/static/images/navImg1.jpg" alt="" height="500px"
-                    class="position-absolute end-0 flight d-block col-3 p-0" />
-                <div class="service d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">
-                                Food & Beverages
-                            </p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="restaurants">Resturants</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Cafes</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="service d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">Shopping</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Stores & Mall</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="service d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">Experience</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Rest & Entertainment</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="airport d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">
-                                Airport Transportation
-                            </p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Taxi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Parking Area</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Car rental</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="airport d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">Maps</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Airport Map</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="#">Terminals</a>
-                        </li>
-                    </ul>
-                </div>
-                <img src="/static/images/navImg2.jpg" alt="" height="500px"
-                    class="d-none position-absolute end-0 airport d-block col-3 p-0" />
-                <div class="ticket d-none col-3 p-5">
-                    <ul class="navbar-nav ps-3">
-                        <li class="nav-item">
-                            <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="{% url 'view_tickets' %}">View
-                                Tickets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
-                        </li>
-                    </ul>
-                </div>
-                <img src="/static/images/navImg3.jpg" alt="" height="500px"
-                    class="d-none position-absolute end-0 ticket d-block col-3 p-0" />
+          <div class="row">
+            <div class="col-2 p-5">
+              <ul class="navbar-nav flex-grow-1 ps-5 my-1">
+                <li class="nav-item">
+                  <a class="nav-link fs-5 fw-semibold text-uppercase mainNav active fw-bold"
+                    onclick="navigate(this)">Flight</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Airport</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5 fw-semibold text-uppercase mainNav" onclick="navigate(this)">Tickets</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5 fw-semibold text-uppercase" href="#">About Us</a>
+                </li>
+              </ul>
             </div>
+            <div class="d-flex col-1 p-5" style="height: 500px !important">
+              <div class="vr"></div>
+            </div>
+            <div class="flight d-block col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">Flight Info</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="schedule">Arrival</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="schedule">Departures</a>
+                </li>
+              </ul>
+            </div>
+            <div class="flight d-block col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">
+                    Airport Guides
+                  </p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Something</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Something</a>
+                </li>
+              </ul>
+            </div>
+            <img src="/static/images/navImg1.jpg" alt="" height="500px"
+              class="position-absolute end-0 flight d-block col-3 p-0" />
+            <div class="service d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">
+                    Food & Beverages
+                  </p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="restaurants">Resturants</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Cafes</a>
+                </li>
+              </ul>
+            </div>
+            <div class="service d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">Shopping</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Stores & Mall</a>
+                </li>
+              </ul>
+            </div>
+            <div class="service d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">Experience</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Rest & Entertainment</a>
+                </li>
+              </ul>
+            </div>
+            <div class="airport d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">
+                    Airport Transportation
+                  </p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Taxi</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Parking Area</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Car rental</a>
+                </li>
+              </ul>
+            </div>
+            <div class="airport d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">Maps</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Airport Map</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="#">Terminals</a>
+                </li>
+              </ul>
+            </div>
+            <img src="/static/images/navImg2.jpg" alt="" height="500px"
+              class="d-none position-absolute end-0 airport d-block col-3 p-0" />
+            <div class="ticket d-none col-3 p-5">
+              <ul class="navbar-nav ps-3">
+                <li class="nav-item">
+                  <p class="fs-5 fw-semibold text-uppercase">ticket Info</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{% url 'view_tickets' %}">View
+                    Tickets</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="mytickets">My tickets</a>
+                </li>
+              </ul>
+            </div>
+            <img src="/static/images/navImg3.jpg" alt="" height="500px"
+              class="d-none position-absolute end-0 ticket d-block col-3 p-0" />
+          </div>
         </div>
-    </div>
+      </div>
       </div>
     </nav>
 
@@ -201,17 +197,15 @@
       <img src="static/images/tableTopTicket.jpg" alt="" class="img-fluid object-fit-scale" />
       <div class="position-absolute top-50 start-0 z-3 ps-5 ms-5">
         <p class="text-white h1 fw-bold fst-italic bg-dark bg-opacity-75 p-3 rounded-pill">
-          Flight Tickets
+          My Tickets
         </p>
       </div>
     </div>
     <div class="tableSetter"></div>
     <div class="w-75 mx-auto">
-      <div class="navbar bg-light">
-        <div class="">
-          <p class="h2 mx-5 fw-bold">My Tickets</p>
-        </div>
-      <table class="table table-hover table-striped align-middle bg-white ticketTable">
+
+      <div class="w-100 bg-light navbar"><p class="h2 mx-5 fw-bold py-1">My Tickets</p></div>
+      <table class="table table-hover table-striped align-middle bg-white ticketTable mb-0">
         <thead class="bg-light">
           <tr class="table-dark">
             <th scope="col">Airline Name</th>
@@ -224,24 +218,17 @@
         <tbody class="">
           {% for i in all %}
           <tr class="border-bottom">
-              <th>{{i.0}}</th>
-              <td>{{i.1}}</td>
-              <td>{{i.2}}</td>
-              <td>{{i.3}}</td>
-              <td>{{ i.4 }}</td>
-            </tr>
+            <th>{{i.0}}</th>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{ i.4 }}</td>
+          </tr>
           {% endfor %}
-          
-            <!-- <tr class="border-bottom">
-              <th>LOGIN TO</th>
-              <td>TO</td>
-              <td>VIEW</td>
-              <td>YOUR</td>
-              <td>TICKETS</td>
-            </tr>           -->
         </tbody>
       </table>
     </div>
+
 
     <!-- footer -->
 
@@ -256,7 +243,7 @@
             <div class="row">
               <!-- Grid column -->
               <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <a href="{% url 'homepage' %}" class="text-decoration-none">
+                <a href="{% url 'homepage' }" class="text-decoration-none">
                   <h6 class="text-white text-uppercase mb-4 font-weight-bold">
                     Karachi Airport
                   </h6>
@@ -283,7 +270,7 @@
                   <a class="text-white text-decoration-none" href="schedule">Departures</a>
                 </p>
                 <p>
-                  <a class="text-white text-decoration-none" href="restaurants">Resturants</a>
+                  <a class="text-white text-decoration-none" href="#">Resturants</a>
                 </p>
                 <p>
                   <a class="text-white text-decoration-none">Transportation</a>
@@ -347,7 +334,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"></script>
-    <script src="static/app.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 
 </html>

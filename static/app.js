@@ -14,7 +14,7 @@ async function logJSONData() {
             date: jsonData.daily.time[0],
             temp: jsonData.hourly.temperature_2m[hour]
         };
-        document.getElementById("wTemp").textContent = `Temp: ${data.temp}*C`
+        document.getElementById("wTemp").textContent = `Temp: ${data.temp}°C`
         document.getElementById("curDate").textContent = data.date;
         document.getElementById("wLogo").innerHTML = (() => {
             if (hour <= 6) {
@@ -38,7 +38,6 @@ function navigate(self) {
     let elems = {
         "flight": document.querySelectorAll(".flight"),
         "services": document.querySelectorAll(".service"),
-        "airport": document.querySelectorAll(".airport"),
         "tickets": document.querySelectorAll(".ticket")
     }
     let mainNav = document.querySelectorAll(".mainNav")
