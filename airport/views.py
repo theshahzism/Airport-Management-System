@@ -43,7 +43,7 @@ def add_my_ticket(request):
     myTickets(tick_id, ticketid = ticket_name, username=active_user1).save()
     messages.info(request, 'Ticket Successfully booked!!')
     cursor=connection.cursor()
-    slt = "SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE ticketNO <> %(ticketno)s"
+    slt = "SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE ticketNO <> %(ticketno)s AND destination <> 'karachi'"
     cursor.execute(slt,{'ticketno':tick_id})
     results_tickets=cursor.fetchall()
     cursor.execute('SELECT DISTINCT destination FROM airport_airlineoperates JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id WHERE destination <> "Karachi"')
@@ -146,6 +146,8 @@ def editprofile(request):
 def search(request):
     cursor=connection.cursor()
     answer = request.POST.get('dropdown')
+    if answer == 'all':
+        return view_tickets(request)
     query = "SELECT ticketNO,airlineName,destination,departureTime,airlineClass,price,username FROM airport_airlineoperates INNER JOIN airport_tickets ON airport_airlineoperates.airlineID = airport_tickets.airlineID_id INNER JOIN airport_mytickets ON airport_tickets.ticketNO = airport_mytickets.id WHERE destination = %(desti)s"
     
     cursor.execute(query,{'desti':answer})
@@ -164,3 +166,9 @@ def restaurants(request):
     cursor.execute('SELECT * FROM airport_restaurants')
     results_restaurants=cursor.fetchall()
     return render(request,'restuarants.html',{"restaurants_results":results_restaurants})
+
+def aboutUS(request):
+    return render(request,'aboutUs.html')
+
+def stores(request):
+    return render(request, 'stores.html')

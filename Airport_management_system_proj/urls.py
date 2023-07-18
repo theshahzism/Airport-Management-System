@@ -34,6 +34,8 @@ urlpatterns = [
     path('accounts/login/login',views.login_user, name='login'),
     path('search', views.search, name='search'),
     path('restaurants', views.restaurants, name='restaurants'),
+    path('aboutus', views.aboutUS, name='aboutus'),
+    path('stores', views.stores, name='stores'),
     ]
 
 
